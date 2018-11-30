@@ -1,0 +1,50 @@
+<html>
+<head><title>Javascript - Övningar</title><meta charset="utf-8"></head>
+<body>
+<pre><code><script>
+var antalPlatser = prompt("Antal platser i klassrummet");
+var antalElever = prompt("Antal elver");
+var difference = (antalPlatser - antalElever);
+
+console.log(difference);
+
+
+//sätter in värde på elev, elevens nummer, i arrayn med elever
+var elevArray = [];
+ for(var i = 0; i < antalElever; i++){
+   elevArray[i] = “ElevID “ + ( i+1);
+ }
+
+console.log(elevArray);
+if (antalPlatser < antalElever) {
+     document.writeln("Det saknas :" + difference/-1 + " platser. Försök igen genom att ladda om sidan. ")
+     // inget att gora, det finns inte tillräckligt många platser. Avbryt!.
+     return
+  }
+
+
+// En array med elever. Index ar platsen, vardet ar eleven.
+var platsArray = [];
+
+  // den ska ta random elev och sätta på plats 1- antalPlatser
+for(var i = 0; i < antalElever; i++){
+    // Valj ett slumpmassigt varde mellan 0 och langden pa antal elever
+    var slumpassigElevIndex = Math.floor(Math.random() * elevArray.length);
+   // Hamta eleven som finns pa plats slumpassigElevIndex. “ElevID X”.
+    var elev = elevArray[slumpassigElevIndex];
+    // Lagg till eleven i listan med elever vi placerat ut.
+    // platsArray blir ett element storre i length.
+    platsArray.push(elev)
+    document.writeln( platsArray.length + " - " + elev );
+    // tar bort den elev som valts så den inte kommer igen
+    // elevArray blir nu en mindre i length.
+    var removed = elevArray.splice(i, 1)
+    console.log("tog bort eleven som fick en plats: " + removed);
+ }
+
+
+document.writeln("Tack för att du använt vårt program! Felanmäl gärna till kazper.ovelius@gmail.com");
+
+</script></code></pre>
+</body>
+</html>
